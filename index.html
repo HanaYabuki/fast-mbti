@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAST-MBTI</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <div>FAST-MBTI</div>
+        </div>
+        <form action="#" id="test">
+            <div class="item">
+                <div>疲惫时</div>
+                <div class="selector">
+                    <label>
+                        <span>一人独处</span>
+                        <input type="radio" name="IE" value="I">
+                    </label>
+                    <label>
+                        <span>广泛社交</span>
+                        <input type="radio" name="IE" value="E">
+                    </label>
+                </div>
+            </div>
+            <div class="item">
+                <div>思考时</div>
+                <div class="selector">
+                    <label>
+                        <span>人生价值</span>
+                        <input type="radio" name="NS" value="N">
+                    </label>
+                    <label>
+                        <span>午饭吃啥</span>
+                        <input type="radio" name="NS" value="S">
+                    </label>
+                </div>
+            </div>
+            <div class="item">
+                <div>朋友遇到困难时</div>
+                <div class="selector">
+                    <label>
+                        <span>安抚情绪</span>
+                        <input type="radio" name="FT" value="F">
+                    </label>
+                    <label>
+                        <span>思考办法</span>
+                        <input type="radio" name="FT" value="T">
+                    </label>
+                </div>
+            </div>
+            <div class="item">
+                <div>做事时</div>
+                <div class="selector">
+                    <label>
+                        <span>提前计划</span>
+                        <input type="radio" name="PJ" value="P">
+                    </label>
+                    <label>
+                        <span>不慌不忙</span>
+                        <input type="radio" name="PJ" value="J">
+                    </label>
+                </div>
+            </div>
+            <div id="result"></div>
+        </form>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #2d2d2d;
+        }
+
+        .title {
+            margin: 0 auto;
+            height: 8em;
+            width: 8em;
+            border-radius: 50%;
+            background-color: #2223;
+            border: 1px solid white;
+        }
+
+        .title>div {
+            color: white;
+            font-size: large;
+            position: relative;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .container {
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 2em;
+            border-radius: 2em;
+            box-shadow: 2px 2px 3px 4px black;
+        }
+
+        .item {
+            margin: 1em;
+            padding: 1em;
+            background-color: #444;
+        }
+
+        .selector {
+            display: flex;
+        }
+
+        .selector>label {
+            flex-grow: 1;
+            margin: .5em;
+            padding: .5em;
+            display: block;
+            background-color: #fff;
+        }
+
+        .selector>label>input {
+            display: none;
+        }
+
+        .selector>label>span {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.addEventListener('input', function (e) {
+            const fd = new FormData(document.querySelector('#test'))
+            const result = ["IE", "NS", "FT", "PJ"]
+                .map(key => fd.get(key))
+                .reduce((total, item) => item ? (total + item) : undefined)
+            console.log(result)
+            if (result) {
+                document.querySelector('#result').innerHTML = result
+            }
+        })
+    </script>
+
+</body>
+
+</html>
